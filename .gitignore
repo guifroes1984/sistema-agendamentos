@@ -1,0 +1,10 @@
+**/target/
+**/node_modules/
+**/.angular/
+**/.gradle/
+.env
+.env.*
+!.env.example
+*.log
+.idea/
+.DS_Store
