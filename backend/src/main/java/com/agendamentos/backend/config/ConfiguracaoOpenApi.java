@@ -1,14 +1,17 @@
 package com.agendamentos.backend.config;
 
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration 
+@Configuration
 public class ConfiguracaoOpenApi {
 
-    @Bean 
+    @Bean
     public OpenAPI configurarOpenApi() {
         return new OpenAPI()
                 .info(new Info()
@@ -17,6 +20,14 @@ public class ConfiguracaoOpenApi {
                         .description(
                                 "API REST para gerenciamento de usuários, "
                                 + "profissionais, serviços e agendamentos."
+                        ))
+                .components(new Components()
+                        .addSecuritySchemes(
+                                "bearerAuth",
+                                new SecurityScheme()
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")
                         ));
     }
 }
