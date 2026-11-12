@@ -60,4 +60,12 @@ public class TratadorGlobalExcecoes {
                                                 "mensagem", excecao.getMessage()));
         }
 
+        @ExceptionHandler(ProfissionalJaCadastradoException.class)
+        public ResponseEntity<Map<String, String>> tratarProfissionalJaCadastrado(
+                        ProfissionalJaCadastradoException excecao) {
+
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(
+                                Map.of("mensagem", excecao.getMessage()));
+        }
+
 }
